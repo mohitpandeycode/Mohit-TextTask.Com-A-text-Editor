@@ -7,12 +7,26 @@
     <title>{{purpose}}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
-
+  <style>
+    body{
+      background-color: #212121;
+      color: white;
+    }
+    .form-control{
+      background-color: #1919194c;
+      color: white;
+    }
+    .form-control:focus{
+      background-color: #1919194c;
+      color: white;
+    }
+  
+  </style>
   <body>
 
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Mohit-TextTask.com</a>
+    <a class="navbar-brand" href="/">Mohit-TextTask.com</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,17 +40,6 @@
         </li>
                 <li class="nav-item">
           <a class="nav-link" href="#">Contact Us</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -56,7 +59,7 @@
 <form action="analyze" method="post"> {% csrf_token %}  <!-- we can use get and post both but post make secure your url-->
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label mt-2" ><h1>Enter Your Text Here</h1></label>
-  <textarea class="form-control" name= 'text'id="exampleFormControlTextarea1" style="font-size: 20px;"   rows="10"></textarea>
+  <textarea class="form-control" name= 'text' id="textitem" style="font-size: 16px;"   rows="6"></textarea>
 </div>
 
   <div class="form-check form-switch">
@@ -79,7 +82,7 @@
   <label class="form-check-label" for="flexSwitchCheckChecked3">New Line Remover</label>
 </div>
 
-  <button type="Submit" class="btn btn-success mt-3">Convert</button>
+  <button type="Submit" id="btns" class="btn btn-danger mt-3">Convert</button>
 
 </form>
 </div>
@@ -87,13 +90,25 @@
    <br>
 
    <div class="container">
-<p style="font-family: Comic Sans Ms; font-size: 40px; color: #800080;">Your Analyzed Text Is :- {{purpose}}  </p>
-  <pre><textarea class="form-control" name= 'text' id="ResultTextarea1" style="font-size: 20px;"  rows="10">{{analyzed}}</textarea></pre>
+<p style="font-family: popins; font-size: 35px; color: #00ecff; font-weight: 600;">Your Analyzed Text Is :- {{purpose}}  </p>
+  <pre><textarea class="form-control" name= 'text' id="ResultTextarea1" style="font-size: 17px;" readonly rows="6">{{analyzed}}</textarea></pre>
 </div>
 
      <!--Starter Script for bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script>
+  let text = document.getElementById('textitem');
+  let btns = document.getElementById('btns');
+  
+  btns.addEventListener('click',()=>{
+    let value = text.value;
+    localStorage.removeItem('textt');
+    localStorage.setItem('textt', value);
+  })
+  text.innerText = localStorage.getItem('textt');
+
+</script>
   </body>
 </html>

@@ -14,6 +14,12 @@ def analyze(request):
 
     analyzing = ''
     punctuation = [',', '.', '!', '?', ':', ';', '-', '(', ')', '[', ']', '{', '}', '"', "'"]
+
+    if djtext == "Anjali Mehta" or djtext == "anjali mehta" or djtext == "Anjali mehta" :
+        analyzing="Hey Anjali my baby😋, just wanted to take a moment to remind you of how special you are to me. Your smile brightens my day, your laughter is music to my ears, and your presence fills my heart with warmth and joy. I feel incredibly lucky to have you in my life, and I cherish every moment we spend together. You mean the world to me, and I'm so grateful to have you as my girlfriend. Sending you all my love and a sweet hug from afar. 💖I love you baby🥰😍❤️"
+        djtext = analyzing
+        prm = {'analyzed': analyzing}
+
     if removepunc == "on":
             for char in djtext:
                 if char not in punctuation:
@@ -48,7 +54,7 @@ def analyze(request):
         prm = {'purpose': 'Text Error', 'analyzed': analyzing}
         return render(request, 'analyze.html', prm)
 
-    if removepunc!='on' and Capitalize != 'on' and Dcapitalize != 'on' and NewLineRemover != 'on' :
+    if removepunc!='on' and Capitalize != 'on' and Dcapitalize != 'on' and NewLineRemover != 'on':
         analyzing = "Please Select Any Option To Convert....!"
         prm = {'purpose': 'Option Error', 'analyzed': analyzing}
         return render(request, 'analyze.html', prm)

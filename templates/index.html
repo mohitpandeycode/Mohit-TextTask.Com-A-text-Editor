@@ -7,12 +7,26 @@
     <title>Mohit-TextTask.com</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
+<style>
+  body{
+    background-color: #212121;
+    color: white;
+  }
+  .form-control{
+    background-color: #1919194c;
+    color: white;
+  }
+  .form-control:focus{
+    background-color: #1919194c;
+    color: white;
+  }
 
+</style>
   <body>
 
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Mohit-TextTask.com</a>
+    <a class="navbar-brand" href="/">Mohit-TextTask.com</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,7 +59,7 @@
 <form action="analyze" method="post">{% csrf_token %}
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label mt-2" ><h1>Enter Your Text Here.....</h1></label>
-  <textarea class="form-control" name= 'text'id="exampleFormControlTextarea1" style="font-size: 20px;" rows="10" ></textarea>
+  <textarea class="form-control" name= 'text' id="Textitem" style="font-size: 16px;" rows="6" ></textarea>
 </div>
 
   <div class="form-check form-switch">
@@ -60,7 +74,7 @@
 
     <div class="form-check form-switch">
   <input class="form-check-input" name="dcapitalize" type="checkbox" role="switch" id="flexSwitchCheckDefault2">
-  <label class="form-check-label" for="flexSwitchCheckDefault2"> DCapitalize</label>
+  <label class="form-check-label" for="flexSwitchCheckDefault2"> DeCapitalize</label>
 </div>
 
 <div class="form-check form-switch">
@@ -68,7 +82,7 @@
   <label class="form-check-label" for="flexSwitchCheckChecked3">New Line Remover</label>
 </div>
 
-  <button type="Submit" class="btn btn-success mt-3">Convert</button>
+  <button type="Submit" id="btns" class="btn btn-danger mt-3">Convert</button>
 
 </form>
 </div>
@@ -76,13 +90,23 @@
    <br>
 
    <div class="container">
-<p style="font-family: Comic Sans Ms; font-size: 40px;">Your Analyzed Text Is :-   </p>
-  <textarea class="form-control" name= 'text'id="ResultTextarea1" style="font-size: 20px;"   rows="10"></textarea>
+<p style="font-family: popins; font-size: 40px;">Your Analyzed Text Is :-   </p>
+  <textarea class="form-control" name= 'text'id="ResultTextarea1" style="font-size: 20px;" readonly rows="6"></textarea>
 </div>
 
    <!--Starter Script for bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script>
+  let text = document.getElementById('Textitem');
+  let btns = document.getElementById('btns');
+  
+  btns.addEventListener('click',()=>{
+    let value = text.value;
+    localStorage.removeItem('textt');
+    localStorage.setItem('textt', value);
+  })
+</script>
   </body>
 </html>
